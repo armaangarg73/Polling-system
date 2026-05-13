@@ -1,9 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-
+import CreatePoll from "./pages/CreatePoll";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import PollDetails from "./pages/PollDetails";
 
 function App() {
   return (
@@ -18,6 +19,16 @@ function App() {
           </ProtectedRoute>
         }
       />
+
+      <Route
+        path="/create"
+        element={
+          <ProtectedRoute>
+            <CreatePoll />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="/poll/:id" element={<PollDetails />} />
     </Routes>
   );
 }

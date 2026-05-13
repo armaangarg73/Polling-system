@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import authRoutes from "./routes/authRoutes.js";
 import pollRoutes from "./routes/pollRoutes.js";
+import responseRoutes from "./routes/responseRoutes.js";
 
 dotenv.config();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/polls", pollRoutes);
+app.use("/api/responses", responseRoutes);
 
 app.get("/", (req, res) => {
   res.send("Api running");
