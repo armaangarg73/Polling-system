@@ -5,6 +5,9 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PollDetails from "./pages/PollDetails";
+import PollResults from "./pages/PollResults";
+import Home from "./pages/Home";
+
 
 function App() {
   return (
@@ -29,6 +32,8 @@ function App() {
         }
       />
       <Route path="/poll/:id" element={<PollDetails />} />
+      <Route path="/poll/:id/results" element={<PollResults />} />
+      <Route path="/home" element={<Home />} />
     </Routes>
   );
 }

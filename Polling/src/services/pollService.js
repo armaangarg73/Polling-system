@@ -41,3 +41,31 @@ export const submitResponse = async (responseData) => {
     },
   );
 };
+
+export const getPollResults = async (pollId) => {
+  return await axios.get(`http://localhost:5000/api/polls/${pollId}/results`);
+};
+
+export const deletePoll = async (pollId) => {
+  const token = localStorage.getItem("token");
+
+  return await axios.delete(`${API}/${pollId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export const publishResults = async (pollId) => {
+  const token = localStorage.getItem("token");
+
+  return await axios.patch(
+    `${API}/${pollId}/publish`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    },
+  );
+};

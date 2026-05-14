@@ -1,16 +1,125 @@
-# React + Vite
+PollSphere 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack realtime polling and analytics platform where users can create interactive polls, collect responses, analyze audience insights and publish public results with live updates.
 
-Currently, two official plugins are available:
+Built using the MERN Stack with Socket.IO for realtime analytics and a premium SaaS-inspired UI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+✨ Features
 
-## React Compiler
+🔐 Authentication
+User Registration & Login
+JWT Authentication
+Protected Routes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🗳 Poll Management
+Create dynamic polls
+Add multiple questions
+Single-option voting system
+Mark questions as required/optional
+Set correct answers
+Poll expiry system
+Delete polls
 
-## Expanding the ESLint configuration
+👥 Response System
+Anonymous responses
+Authenticated responses
+Public poll sharing
+Validation for required questions
+Score calculation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+📊 Analytics Dashboard
+Realtime response updates using Socket.IO
+Poll analytics dashboard
+Response distributions
+Pie Charts & Bar Graphs
+Winning option highlighting
+Engagement metrics
+Live streaming indicators
+
+🌍 Public Result Publishing
+Publish final poll results
+Publicly accessible analytics pages
+Shared result dashboards
+
+🎨 UI/UX
+Premium SaaS-inspired design
+Glassmorphism effects
+Responsive layouts
+Gradient aesthetics
+Realtime visual feedback
+Modern dashboard experience
+
+🛠 Tech Stack
+Frontend
+React.js
+React Router DOM
+Tailwind CSS
+Recharts
+Socket.IO Client
+Axios
+Backend
+Node.js
+Express.js
+MongoDB
+Mongoose
+Socket.IO
+JWT Authentication
+
+⚡ Realtime Features
+Live response updates
+Instant analytics refresh
+Socket.IO powered streaming
+Realtime engagement tracking
+
+📸 Screenshots
+
+Home page
+![alt text](image-2.png)
+![alt text](image-1.png)
+![alt text](image-3.png)
+![alt text](image-4.png)
+![alt text](image-5.png)
+
+LogIn page
+![alt text](image-6.png)
+
+Register page
+![alt text](image-7.png)
+
+Dashboard page
+![alt text](image-8.png)
+
+Create Poll page
+![alt text](image-9.png)
+
+Open live Poll page
+![alt text](image-10.png)
+
+Open Expired Poll page
+![alt text](image-11.png)
+
+Result Live Poll page
+![alt text](image-12.png)
+![alt text](image-13.png)
+![alt text](image-14.png)
+
+Result Expired Poll page
+![alt text](image-15.png)
+![alt text](image-16.png)
+
+🚀 Installation
+Clone Repository
+git clone https://github.com/armaangarg73/Polling-system
+
+🖥️ Future Improvements
+Framer Motion animations
+Advanced analytics
+Team collaboration
+AI-generated insights
+Poll templates
+Dark/Light themes
+Export analytics as PDF
+
+👨‍💻 Author
+Armaan Garg
+Built with passion, realtime systems and modern SaaS design principles.
