@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { QRCodeSVG } from "qrcode.react";
 import { getSinglePoll, submitResponse } from "../services/pollService";
 
-const socket = io("http://localhost:5000");
+const socket = io(import.meta.env.VITE_API_URL);
 
 const PollDetails = () => {
   const { id } = useParams();

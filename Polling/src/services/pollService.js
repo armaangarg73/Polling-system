@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:5000/api/polls";
+const API = import.meta.env.VITE_API_URL + "/api/polls";
 
 export const createPoll = async (pollData) => {
   const token = localStorage.getItem("token");
@@ -30,7 +30,7 @@ export const submitResponse = async (responseData) => {
   const token = localStorage.getItem("token");
 
   return await axios.post(
-    "http://localhost:5000/api/responses",
+    import.meta.env.VITE_API_URL + "/api/responses",
 
     responseData,
 
@@ -43,7 +43,9 @@ export const submitResponse = async (responseData) => {
 };
 
 export const getPollResults = async (pollId) => {
-  return await axios.get(`http://localhost:5000/api/polls/${pollId}/results`);
+  return await axios.get(
+    import.meta.env.VITE_API_URL + `/api/polls/${pollId}/results`,
+  );
 };
 
 export const deletePoll = async (pollId) => {
