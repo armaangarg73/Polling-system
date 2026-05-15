@@ -12,7 +12,7 @@ import Home from "./pages/Home";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route
         path="/dashboard"
@@ -33,7 +33,7 @@ function App() {
       />
       <Route path="/poll/:id" element={<PollDetails />} />
       <Route path="/poll/:id/results" element={<PollResults />} />
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
     </Routes>
   );
 }

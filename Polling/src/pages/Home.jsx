@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <div className="min-h-screen bg-black text-white overflow-hidden relative">
-      {/* Ambient Background */}
       <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.08),transparent_50%),radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.08),transparent_50%)]" />
 
       <div
@@ -17,7 +16,6 @@ const Home = () => {
       <div className="fixed top-0 left-1/4 w-[800px] h-[800px] bg-cyan-500/10 blur-[120px] rounded-full" />
       <div className="fixed bottom-0 right-1/4 w-[700px] h-[700px] bg-purple-600/10 blur-[120px] rounded-full" />
 
-      {/* Navigation */}
       <nav className="relative z-50 max-w-[1600px] mx-auto px-12 lg:px-20 py-8">
         <div className="flex items-center justify-between backdrop-blur-xl bg-white/[0.02] border border-white/[0.05] rounded-3xl px-8 py-5">
           <div>
@@ -60,7 +58,7 @@ const Home = () => {
 
           <div className="flex items-center gap-4">
             <Link
-              to="/"
+              to="/login"
               className="px-6 py-2.5 rounded-xl text-sm font-medium text-gray-300 hover:text-white transition-colors"
             >
               Sign In
