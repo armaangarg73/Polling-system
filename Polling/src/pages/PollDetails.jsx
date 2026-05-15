@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-
+import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
-
+import { QRCodeSVG } from "qrcode.react";
 import { getSinglePoll, submitResponse } from "../services/pollService";
+
+const socket = io("http://localhost:5000");
 
 const PollDetails = () => {
   const { id } = useParams();
@@ -17,6 +19,12 @@ const PollDetails = () => {
 
   const [score, setScore] = useState(null);
 
+  const [participants, setParticipants] = useState(null);
+
+  const [showQR, setShowQR] = useState(false);
+
+  const pollUrl = `${window.location.origin}/poll/${id}`;
+
   useEffect(() => {
     const fetchPoll = async () => {
       try {
@@ -28,6 +36,28 @@ const PollDetails = () => {
     };
     fetchPoll();
   }, [id]);
+
+  useEffect(() => {
+    socket.emit("joinPoll", id);
+
+    socket.on("participantCount", (count) => {
+      setParticipants(count);
+    });
+
+    return () => {
+      socket.emit("leavePoll", id);
+
+       socket.off("participantCount", (count) => {
+        setParticipants(count);
+      });
+    };
+  }, [id]);
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(pollUrl);
+    setMessage("Poll link copied!");
+    setTimeout(() => setMessage(""), 3000);
+  };
 
   if (!poll) {
     return (
@@ -70,7 +100,7 @@ const PollDetails = () => {
       return;
     }
     try {
-       await submitResponse({
+      await submitResponse({
         pollId: poll._id,
         answers,
       });
@@ -87,7 +117,6 @@ const PollDetails = () => {
 
       setMessage("Response submitted successfully");
     } catch (error) {
-
       setMessage(error.response?.data?.message || "Something went wrong");
     }
   };
@@ -189,6 +218,83 @@ const PollDetails = () => {
             {poll.title}
           </h1>
           <p className="text-gray-400 text-lg">{poll.description}</p>
+          <div className="flex items-center gap-4 mt-4 flex-wrap">
+            <div
+              className="
+                  mt-4
+                  inline-block
+                  px-4
+                  py-2
+                  rounded-2xl
+                  bg-cyan-500/10
+                  border
+                  border-cyan-500/20
+                  text-cyan-400
+                  "
+            >
+              {participants !== null ? `${participants} viewing` : "Loading..."}
+            </div>
+            <button
+              onClick={() => setShowQR(!showQR)}
+              className="
+                px-4
+                py-2
+                rounded-2xl
+                bg-purple-500/10
+                border
+                border-purple-500/20
+                text-purple-400
+                hover:bg-purple-500/20
+                transition-all
+                duration-300
+                font-semibold
+                mt-4
+              "
+            >
+              {showQR ? "Hide QR Code" : "Show QR Code"}
+            </button>
+            <button
+              onClick={handleCopyLink}
+              className="
+                px-4
+                py-2
+                rounded-2xl
+                bg-blue-500/10
+                border
+                border-blue-500/20
+                text-blue-400
+                hover:bg-blue-500/20
+                transition-all
+                duration-300
+                font-semibold
+                mt-4
+              "
+            >
+              Copy Link
+            </button>
+          </div>
+
+          {showQR && (
+            <div
+              className="
+                mt-6
+                p-6
+                rounded-2xl
+                bg-white
+                inline-block
+              "
+            >
+              <QRCodeSVG
+                value={pollUrl}
+                size={200}
+                level="H"
+                includeMargin={true}
+              />
+              <p className="text-black text-center mt-2 text-sm font-semibold">
+                Scan to join poll
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="space-y-8">

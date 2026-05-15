@@ -33,6 +33,42 @@ const io = new Server(server, {
   },
 });
 
+const activeParticipants = {};
+
+io.on("connection", (socket) => {
+  socket.on("joinPoll", (pollId) => {
+    socket.join(pollId);
+    activeParticipants[pollId] = (activeParticipants[pollId] || 0) + 1;
+
+    io.to(pollId).emit("participantCount", activeParticipants[pollId]);
+  });
+  socket.on("leavePoll", (pollId) => {
+    
+      removeParticipant(pollId);
+  });
+  socket.on("disconnecting", () => {
+    socket.rooms.forEach((room) => {
+      if (room !== socket.id) {
+        removeParticipant(room);
+      }
+    });
+  });
+  function removeParticipant(pollId) {
+    if (!activeParticipants[pollId]) return;
+
+    activeParticipants[pollId]--;
+
+    if (activeParticipants[pollId] <= 0) {
+      delete activeParticipants[pollId];
+
+      io.to(pollId).emit("participantCount", 0);
+
+      return;
+    }
+
+    io.to(pollId).emit("participantCount", activeParticipants[pollId]);
+  }
+});
 
 export { io };
 

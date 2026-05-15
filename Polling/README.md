@@ -19,6 +19,7 @@ Mark questions as required/optional
 Set correct answers
 Poll expiry system
 Delete polls
+Public poll sharing
 
 👥 Response System
 Anonymous responses
@@ -40,6 +41,18 @@ Live streaming indicators
 Publish final poll results
 Publicly accessible analytics pages
 Shared result dashboards
+
+🎯 Quiz Features
+ Score calculation
+ Correct answer validation
+ Expired poll handling
+ Required question validation
+
+
+📱 Sharing Features
+ QR code generation for polls
+ Copy-to-clipboard poll links
+ Public poll URLs
 
 🎨 UI/UX
 Premium SaaS-inspired design
@@ -66,6 +79,7 @@ Socket.IO
 JWT Authentication
 
 ⚡ Realtime Features
+Live participant tracking
 Live response updates
 Instant analytics refresh
 Socket.IO powered streaming
@@ -111,6 +125,22 @@ Result Expired Poll page
 Clone Repository
 git clone https://github.com/armaangarg73/Polling-system
 
+# 📂 Project Structure
+
+```txt
+client/
+ ├── src/
+ ├── pages/
+ ├── services/
+ ├── routes/
+
+server/
+ ├── controllers/
+ ├── routes/
+ ├── models/
+ ├── middleware/
+```
+
 🖥️ Future Improvements
 Framer Motion animations
 Advanced analytics
@@ -120,6 +150,16 @@ Poll templates
 Dark/Light themes
 Export analytics as PDF
 
-👨‍💻 Author
-Armaan Garg
-Built with passion, realtime systems and modern SaaS design principles.
+# 👨‍💻 Author
+
+**Armaan Garg**
+
+Built with realtime systems, analytics, and modern SaaS design principles.
+
+GitHub:
+
+https://github.com/armaangarg73
+
+---
+
+⭐ If you found this project interesting, consider giving it a star.
