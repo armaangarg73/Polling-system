@@ -12,10 +12,12 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({
-  origin: process.env.CLIENT_URL,
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL,
+    credentials: true,
+  }),
+);
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
@@ -46,8 +48,7 @@ io.on("connection", (socket) => {
     io.to(pollId).emit("participantCount", activeParticipants[pollId]);
   });
   socket.on("leavePoll", (pollId) => {
-    
-      removeParticipant(pollId);
+    removeParticipant(pollId);
   });
   socket.on("disconnecting", () => {
     socket.rooms.forEach((room) => {
@@ -80,8 +81,10 @@ mongoose
   .then(() => {
     console.log("MongoDB Connected");
 
-    server.listen(process.env.PORT, () => {
-      console.log(`Server running on port ${process.env.PORT}`);
+    const PORT = process.env.PORT || 5000;
+
+    server.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((err) => console.log(err));
